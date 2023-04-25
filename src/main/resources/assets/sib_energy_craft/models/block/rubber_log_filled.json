@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "sib_energy_craft:block/rubber_log",
+    "down": "sib_energy_craft:block/rubber_log_top",
+    "up": "sib_energy_craft:block/rubber_log_top",
+    "north": "sib_energy_craft:block/rubber_log_filled",
+    "east": "sib_energy_craft:block/rubber_log",
+    "south": "sib_energy_craft:block/rubber_log",
+    "west": "sib_energy_craft:block/rubber_log"
+  }
+}

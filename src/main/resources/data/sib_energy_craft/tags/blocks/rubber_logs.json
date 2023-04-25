@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "sib_energy_craft:rubber_log",
+    "sib_energy_craft:rubber_wood",
+    "sib_energy_craft:stripped_rubber_log",
+    "sib_energy_craft:stripped_rubber_wood"
+  ]
+}

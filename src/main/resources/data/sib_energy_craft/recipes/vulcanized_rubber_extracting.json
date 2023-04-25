@@ -1,0 +1,13 @@
+{
+  "type": "sib_energy_craft:extracting",
+  "group": "vulcanized_rubber",
+  "ingredient": {
+    "item": "sib_energy_craft:rubber"
+  },
+  "result": {
+    "item": "sib_energy_craft:vulcanized_rubber",
+    "count": 3
+  },
+  "experience": 0.2,
+  "cookingtime": 100
+}

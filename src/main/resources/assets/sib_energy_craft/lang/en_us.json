@@ -1,0 +1,14 @@
+{
+  "block.sib_energy_craft.rubber_leaves": "Rubber Tree Leaves",
+  "block.sib_energy_craft.rubber_sapling": "Rubber Sapling",
+  "block.sib_energy_craft.potted_rubber_sapling": "Potted Rubber Sapling",
+  "block.sib_energy_craft.rubber_log": "Rubber Log",
+  "block.sib_energy_craft.stripped_rubber_log": "Stripped Rubber Log",
+  "block.sib_energy_craft.rubber_planks": "Rubber Planks",
+  "block.sib_energy_craft.rubber_wood": "Rubber Wood",
+  "block.sib_energy_craft.stripped_rubber_wood": "Stripped Rubber Wood",
+
+  "item.sib_energy_craft.tree_tap": "Tree Tap",
+  "item.sib_energy_craft.rubber": "Rubber",
+  "item.sib_energy_craft.vulcanized_rubber": "Vulcanized Rubber"
+}

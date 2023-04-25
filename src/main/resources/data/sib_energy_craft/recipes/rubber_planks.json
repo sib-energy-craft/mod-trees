@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "sib_energy_craft:rubber_logs"
+    }
+  ],
+  "result": {
+    "item": "sib_energy_craft:rubber_planks",
+    "count": 4
+  }
+}

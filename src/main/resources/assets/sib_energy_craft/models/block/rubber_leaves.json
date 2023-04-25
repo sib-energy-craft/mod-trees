@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "sib_energy_craft:block/rubber_leaves"
+  }
+}

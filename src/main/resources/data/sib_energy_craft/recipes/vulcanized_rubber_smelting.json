@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "group": "vulcanized_rubber",
+  "ingredient": {
+    "item": "sib_energy_craft:rubber"
+  },
+  "result": "sib_energy_craft:vulcanized_rubber",
+  "experience": 0.7,
+  "cookingtime": 100
+}

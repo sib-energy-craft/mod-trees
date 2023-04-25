@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "sib_energy_craft:block/rubber_planks"
+  }
+}

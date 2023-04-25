@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/flower_pot_cross",
+  "textures": {
+    "plant": "sib_energy_craft:block/rubber_sapling"
+  }
+}

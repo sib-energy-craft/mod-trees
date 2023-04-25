@@ -1,0 +1,14 @@
+{
+  "block.sib_energy_craft.rubber_leaves": "Листья каучукового дерева",
+  "block.sib_energy_craft.rubber_sapling": "Саженец каучукового дерева",
+  "block.sib_energy_craft.potted_rubber_sapling": "Саженец каучука в горшке",
+  "block.sib_energy_craft.rubber_log": "Каучуковое бревно",
+  "block.sib_energy_craft.stripped_rubber_log": "Обтёсанное каучуковое бревно",
+  "block.sib_energy_craft.rubber_planks": "Доски каучукового дерева",
+  "block.sib_energy_craft.rubber_wood": "Каучуковое дерево",
+  "block.sib_energy_craft.stripped_rubber_wood": "Обтёсанное каучуковое дерево",
+
+  "item.sib_energy_craft.tree_tap": "Краник для дерева",
+  "item.sib_energy_craft.rubber": "Каучук",
+  "item.sib_energy_craft.vulcanized_rubber": "Резина"
+}
