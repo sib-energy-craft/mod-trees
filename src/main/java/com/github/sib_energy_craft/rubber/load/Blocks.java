@@ -2,6 +2,7 @@ package com.github.sib_energy_craft.rubber.load;
 
 import com.github.sib_energy_craft.energy_api.utils.Identifiers;
 import com.github.sib_energy_craft.sec_utils.common.Identified;
+import com.github.sib_energy_craft.sec_utils.load.ModRegistrar;
 import com.github.sib_energy_craft.sec_utils.utils.BlockUtils;
 import com.github.sib_energy_craft.rubber.block.RubberLogBlock;
 import com.github.sib_energy_craft.rubber.block.RubberSaplingGenerator;
@@ -20,8 +21,7 @@ import net.minecraft.util.math.Direction;
  * @since 0.0.1
  * @author sibmaks
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class Blocks {
+public final class Blocks implements ModRegistrar {
     public static final Identified<LeavesBlock> RUBBER_LEAVES;
 
     public static final Identified<SaplingBlock> RUBBER_SAPLING;

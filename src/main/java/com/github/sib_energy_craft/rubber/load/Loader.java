@@ -6,6 +6,8 @@ import net.fabricmc.api.ModInitializer;
 
 import java.util.Set;
 
+import static com.github.sib_energy_craft.sec_utils.load.LoadUtils.load;
+
 
 /**
  * @since 0.0.1
@@ -15,12 +17,8 @@ import java.util.Set;
 public class Loader implements ModInitializer {
 
     @Override
-    @SneakyThrows
     public void onInitialize() {
-        log.info("Load: {}", Loader.class.getName());
-        for (var type : Set.of(Blocks.class, Items.class, PlacedFeatures.class)) {
-            log.info("Loaded: {}", Class.forName(type.getName()));
-        }
-        log.info("Loaded: {}", Loader.class.getName());
+        var classLoader = getClass().getClassLoader();
+        load(classLoader, "mod-rubber", Loader.class.getPackageName());
     }
 }
