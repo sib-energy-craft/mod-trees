@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "sec-mod-rubber",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "name": "SibEnergyCraft - Rubber tree & items",
   "authors": [
     "sibmaks"
@@ -20,6 +20,9 @@
       "com.github.sib_energy_craft.rubber.load.Blocks",
       "com.github.sib_energy_craft.rubber.load.Items",
       "com.github.sib_energy_craft.rubber.load.PlacedFeatures"
+    ],
+    "client": [
+      "com.github.sib_energy_craft.rubber.load.client.ClientBlocks"
     ]
   }
 }

@@ -6,10 +6,8 @@ import com.github.sib_energy_craft.rubber.block.RubberSaplingGenerator;
 import com.github.sib_energy_craft.sec_utils.common.Identified;
 import com.github.sib_energy_craft.sec_utils.load.DefaultModInitializer;
 import com.github.sib_energy_craft.sec_utils.utils.BlockUtils;
-import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
-import net.minecraft.client.render.RenderLayer;
 import net.minecraft.entity.EntityType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.Direction;
@@ -53,14 +51,12 @@ public final class Blocks implements DefaultModInitializer {
                .sounds(BlockSoundGroup.GRASS);
         var saplingBlock = new SaplingBlock(new RubberSaplingGenerator(), saplingSettings);
         RUBBER_SAPLING = BlockUtils.register(Identifiers.of("rubber_sapling"), saplingBlock);
-        BlockRenderLayerMap.INSTANCE.putBlock(RUBBER_SAPLING.entity(), RenderLayer.getTranslucent());
 
         var pottedSaplingSettings = FabricBlockSettings.of(Material.DECORATION)
                 .breakInstantly()
                 .nonOpaque();
         var flowerPotBlock = new FlowerPotBlock(RUBBER_SAPLING.entity(), pottedSaplingSettings);
         POTTED_RUBBER_SAPLING = BlockUtils.register(Identifiers.of("potted_rubber_sapling"), flowerPotBlock);
-        BlockRenderLayerMap.INSTANCE.putBlock(POTTED_RUBBER_SAPLING.entity(), RenderLayer.getTranslucent());
 
         var rubberLogSettings = getLogSettings(MapColor.DIRT_BROWN, MapColor.SPRUCE_BROWN);
         var rubberLogBlock = new RubberLogBlock(rubberLogSettings);
