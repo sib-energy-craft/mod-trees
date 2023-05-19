@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "sib_energy_craft:rubber_planks"
+    }
+  ],
+  "result": {
+    "item": "sib_energy_craft:rubber_button"
+  }
+}
