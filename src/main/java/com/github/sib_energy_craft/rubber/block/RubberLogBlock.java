@@ -1,7 +1,7 @@
 package com.github.sib_energy_craft.rubber.block;
 
-import com.github.sib_energy_craft.tools.item.tree_tap.TreeTap;
 import com.github.sib_energy_craft.rubber.load.Items;
+import com.github.sib_energy_craft.tools.item.tree_tap.TreeTap;
 import lombok.extern.slf4j.Slf4j;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -27,6 +27,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 /**
@@ -42,7 +43,7 @@ public class RubberLogBlock extends Block {
 
     public RubberLogBlock(@NotNull Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState()
+        this.setDefaultState(this.getDefaultState()
                 .with(AXIS_FACING, LogAxisFacing.Y_NORTH)
                 .with(FILLED, Boolean.FALSE));
     }
@@ -101,6 +102,7 @@ public class RubberLogBlock extends Block {
 
     @Override
     protected void appendProperties(@NotNull StateManager.Builder<Block, BlockState> builder) {
+        super.appendProperties(builder);
         builder.add(AXIS_FACING, FILLED);
     }
 
@@ -169,8 +171,13 @@ public class RubberLogBlock extends Block {
         if(isFilled(state)) {
             return;
         }
-        var neighbors = Stream.of(pos.up(), pos.down(), pos.north(), pos.south(), pos.west(), pos.east());
+        Stream<Supplier<BlockPos>> neighbors = Stream.of(
+                pos::up, pos::down,
+                pos::north, pos::south,
+                pos::west, pos::east
+        );
         boolean isNeighborFilled = neighbors
+                .map(Supplier::get)
                 .map(world::getBlockState)
                 .filter(Objects::nonNull)
                 .filter(it -> it.isOf(this))

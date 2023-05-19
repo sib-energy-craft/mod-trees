@@ -24,5 +24,8 @@
     "client": [
       "com.github.sib_energy_craft.rubber.load.client.ClientBlocks"
     ]
-  }
+  },
+  "mixins": [
+    "rubber.mixins.json"
+  ]
 }

@@ -1,8 +1,10 @@
 package com.github.sib_energy_craft.rubber.load;
 
 import com.github.sib_energy_craft.energy_api.utils.Identifiers;
+import com.github.sib_energy_craft.rubber.Hooks;
 import com.github.sib_energy_craft.rubber.block.RubberLogBlock;
 import com.github.sib_energy_craft.rubber.block.RubberSaplingGenerator;
+import com.github.sib_energy_craft.rubber.block.RubberStrippedLogBlock;
 import com.github.sib_energy_craft.sec_utils.common.Identified;
 import com.github.sib_energy_craft.sec_utils.load.DefaultModInitializer;
 import com.github.sib_energy_craft.sec_utils.utils.BlockUtils;
@@ -11,6 +13,8 @@ import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.Direction;
+
+import java.util.Map;
 
 
 /**
@@ -63,8 +67,8 @@ public final class Blocks implements DefaultModInitializer {
         RUBBER_LOG = BlockUtils.register(Identifiers.of("rubber_log"), rubberLogBlock);
 
         var strippedRubberLogSettings = getWoodSettings(MapColor.OAK_TAN, MapColor.OAK_TAN);
-        var pillarBlock = new PillarBlock(strippedRubberLogSettings);
-        STRIPPED_RUBBER_LOG = BlockUtils.register(Identifiers.of("stripped_rubber_log"), pillarBlock);
+        var strippedLogBlock = new RubberStrippedLogBlock(strippedRubberLogSettings);
+        STRIPPED_RUBBER_LOG = BlockUtils.register(Identifiers.of("stripped_rubber_log"), strippedLogBlock);
 
         var planksSettings = AbstractBlock.Settings.of(Material.WOOD, MapColor.BROWN)
                 .strength(2.0f, 3.0f)
@@ -78,6 +82,11 @@ public final class Blocks implements DefaultModInitializer {
 
         var strippedRubberWood = new PillarBlock(strippedRubberLogSettings);
         STRIPPED_RUBBER_WOOD = BlockUtils.register(Identifiers.of("stripped_rubber_wood"), strippedRubberWood);
+
+        Hooks.AxeItemClassInit.accept(Map.of(
+                Blocks.RUBBER_LOG.entity(), Blocks.STRIPPED_RUBBER_LOG.entity(),
+                Blocks.RUBBER_WOOD.entity(), Blocks.STRIPPED_RUBBER_WOOD.entity()
+        ));
     }
 
     private static AbstractBlock.Settings getWoodSettings(MapColor topMapColor, MapColor sideMapColor) {
