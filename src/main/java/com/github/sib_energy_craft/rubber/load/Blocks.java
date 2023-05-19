@@ -37,12 +37,14 @@ public final class Blocks implements DefaultModInitializer {
     public static final Identified<PillarBlock> RUBBER_WOOD;
     public static final Identified<PillarBlock> STRIPPED_RUBBER_WOOD;
 
+    public static final Identified<DoorBlock> RUBBER_DOOR;
     public static final Identified<ButtonBlock> RUBBER_BUTTON;
     public static final Identified<FenceBlock> RUBBER_FENCE;
     public static final Identified<FenceGateBlock> RUBBER_FENCE_GATE;
     public static final Identified<PressurePlateBlock> RUBBER_PRESSURE_PLATE;
     public static final Identified<SlabBlock> RUBBER_SLAB;
     public static final Identified<StairsBlock> RUBBER_STAIRS;
+    public static final Identified<TrapdoorBlock> RUBBER_TRAPDOOR;
 
     static {
         var leavesSettings = FabricBlockSettings.of(Material.LEAVES)
@@ -102,6 +104,14 @@ public final class Blocks implements DefaultModInitializer {
                 .sounds(BlockSoundGroup.WOOD);
 
         var rubberBlockSetType = BlockSetType.BIRCH;
+
+        var rubberDoorSettings = AbstractBlock.Settings
+                .of(Material.WOOD, RUBBER_PLANKS.entity().getDefaultMapColor())
+                .strength(3.0F)
+                .nonOpaque();
+        var rubberDoor = new DoorBlock(rubberDoorSettings, rubberBlockSetType);
+        RUBBER_DOOR = register(Identifiers.of("rubber_door"), rubberDoor);
+
         var rubberButton = createWoodenButtonBlock(rubberBlockSetType);
         RUBBER_BUTTON = register(Identifiers.of("rubber_button"), rubberButton);
 
@@ -126,6 +136,14 @@ public final class Blocks implements DefaultModInitializer {
         var rubberStairsBlock = new StairsBlock(RUBBER_PLANKS.entity().getDefaultState(),
                 AbstractBlock.Settings.copy(RUBBER_PLANKS.entity()));
         RUBBER_STAIRS = register(Identifiers.of("rubber_stairs"), rubberStairsBlock);
+
+        var rubberTrapdoorSettings = AbstractBlock.Settings
+                .of(Material.WOOD, MapColor.PALE_YELLOW)
+                .strength(3.0F)
+                .nonOpaque()
+                .allowsSpawning((state, world, pos, type) -> false);
+        var rubberTrapdoor = new TrapdoorBlock(rubberTrapdoorSettings, rubberBlockSetType);
+        RUBBER_TRAPDOOR = register(Identifiers.of("rubber_trapdoor"), rubberTrapdoor);
     }
 
     private static AbstractBlock.Settings getWoodSettings(MapColor topMapColor, MapColor sideMapColor) {

@@ -31,12 +31,14 @@ public final class Items implements DefaultModInitializer {
     public static final Item RUBBER;
     public static final Item VULCANIZED_RUBBER;
 
+    public static final BlockItem RUBBER_DOOR;
     public static final BlockItem RUBBER_BUTTON;
     public static final BlockItem RUBBER_FENCE;
     public static final BlockItem RUBBER_FENCE_GATE;
     public static final BlockItem RUBBER_PRESSURE_PLATE;
     public static final BlockItem RUBBER_SLAB;
     public static final BlockItem RUBBER_STAIRS;
+    public static final BlockItem RUBBER_TRAPDOOR;
 
     static {
         RUBBER_SAPLING = registerBlockItem(ItemGroups.NATURAL, Blocks.RUBBER_SAPLING);
@@ -48,12 +50,14 @@ public final class Items implements DefaultModInitializer {
         RUBBER_WOOD = registerBlockItem(ItemGroups.BUILDING_BLOCKS, Blocks.RUBBER_WOOD);
         STRIPPED_RUBBER_WOOD = registerBlockItem(ItemGroups.BUILDING_BLOCKS, Blocks.STRIPPED_RUBBER_WOOD);
 
+        RUBBER_DOOR = registerBlockItem(ItemGroups.REDSTONE, Blocks.RUBBER_DOOR);
         RUBBER_BUTTON = registerBlockItem(ItemGroups.REDSTONE, Blocks.RUBBER_BUTTON);
         RUBBER_FENCE = registerBlockItem(ItemGroups.BUILDING_BLOCKS, Blocks.RUBBER_FENCE);
         RUBBER_FENCE_GATE = registerBlockItem(ItemGroups.REDSTONE, Blocks.RUBBER_FENCE_GATE);
         RUBBER_PRESSURE_PLATE = registerBlockItem(ItemGroups.REDSTONE, Blocks.RUBBER_PRESSURE_PLATE);
         RUBBER_STAIRS = registerBlockItem(ItemGroups.BUILDING_BLOCKS, Blocks.RUBBER_STAIRS);
         RUBBER_SLAB = registerBlockItem(ItemGroups.BUILDING_BLOCKS, Blocks.RUBBER_SLAB);
+        RUBBER_TRAPDOOR = registerBlockItem(ItemGroups.REDSTONE, Blocks.RUBBER_TRAPDOOR);
 
         var commonItem = new Item.Settings()
                 .rarity(Rarity.COMMON);

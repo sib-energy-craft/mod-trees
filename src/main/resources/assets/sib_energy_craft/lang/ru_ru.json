@@ -8,12 +8,14 @@
   "block.sib_energy_craft.rubber_wood": "Гевея",
   "block.sib_energy_craft.stripped_rubber_wood": "Обтёсанное дерево гевеи",
 
+  "block.sib_energy_craft.rubber_door": "Дверь из гевеи",
   "block.sib_energy_craft.rubber_button": "Кнопка из гевеи",
   "block.sib_energy_craft.rubber_fence": "Забор из гевеи",
   "block.sib_energy_craft.rubber_fence_gate": "Калитка из гевеи",
   "block.sib_energy_craft.rubber_pressure_plate": "Нажимная плита из гевеи",
   "block.sib_energy_craft.rubber_slab": "Плита из гевеи",
   "block.sib_energy_craft.rubber_stairs": "Ступеньки из гевеи",
+  "block.sib_energy_craft.rubber_trapdoor": "Люк из гевеи",
 
   "item.sib_energy_craft.tree_tap": "Краник для дерева",
   "item.sib_energy_craft.rubber": "Каучук",
