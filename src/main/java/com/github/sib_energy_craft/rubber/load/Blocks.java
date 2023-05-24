@@ -1,10 +1,10 @@
 package com.github.sib_energy_craft.rubber.load;
 
 import com.github.sib_energy_craft.energy_api.utils.Identifiers;
-import com.github.sib_energy_craft.rubber.Hooks;
 import com.github.sib_energy_craft.rubber.block.RubberLogBlock;
 import com.github.sib_energy_craft.rubber.block.RubberSaplingGenerator;
 import com.github.sib_energy_craft.rubber.block.RubberStrippedLogBlock;
+import com.github.sib_energy_craft.sec_utils.Hooks;
 import com.github.sib_energy_craft.sec_utils.common.Identified;
 import com.github.sib_energy_craft.sec_utils.load.DefaultModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
