@@ -1,5 +1,6 @@
 package com.github.sib_energy_craft.rubber.block;
 
+import com.github.sib_energy_craft.sec_utils.block.StrippedBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.PillarBlock;
 import org.jetbrains.annotations.NotNull;
