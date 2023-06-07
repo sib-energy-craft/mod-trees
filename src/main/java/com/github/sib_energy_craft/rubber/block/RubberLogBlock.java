@@ -5,22 +5,18 @@ import com.github.sib_energy_craft.tools.item.tree_tap.TreeTap;
 import lombok.extern.slf4j.Slf4j;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.PillarBlock;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
-import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.BlockMirror;
-import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
@@ -35,85 +31,22 @@ import java.util.stream.Stream;
  * @author sibmaks
  */
 @Slf4j
-public class RubberLogBlock extends Block {
+public class RubberLogBlock extends PillarBlock {
     private static final int CHANCE_TO_FILL = 66;
+    private static final FilledSide[] FILLED_SIDES = FilledSide.values();
 
-    public static final EnumProperty<LogAxisFacing> AXIS_FACING = EnumProperty.of("axis_facing", LogAxisFacing.class);
-    public static final BooleanProperty FILLED = BooleanProperty.of("filled");
+    public static final EnumProperty<FilledSide> FILLED_SIDE = EnumProperty.of("filled_side", FilledSide.class);
 
     public RubberLogBlock(@NotNull Settings settings) {
         super(settings);
         this.setDefaultState(this.getDefaultState()
-                .with(AXIS_FACING, LogAxisFacing.Y_NORTH)
-                .with(FILLED, Boolean.FALSE));
-    }
-
-    @NotNull
-    @Override
-    public BlockState rotate(@NotNull BlockState state, @NotNull BlockRotation rotation) {
-        var axisFacing = state.get(AXIS_FACING);
-        var axis = axisFacing.axis;
-        var facing = axisFacing.facing;
-        if(axis == Direction.Axis.Y) {
-            facing = rotation.rotate(facing);
-            return state.with(AXIS_FACING, LogAxisFacing.find(axis, facing));
-        } else if(axis == Direction.Axis.Z) {
-            int rotations = getRotations(rotation);
-            while (rotations-- > 0) {
-                facing = switch (facing) {
-                    case DOWN -> Direction.WEST;
-                    case UP -> Direction.EAST;
-                    case WEST, NORTH -> Direction.UP;
-                    case EAST, SOUTH -> Direction.DOWN;
-                };
-            }
-            return state.with(AXIS_FACING, LogAxisFacing.find(axis, facing));
-        } else if(axis == Direction.Axis.X) {
-            int rotations = getRotations(rotation);
-            while (rotations-- > 0) {
-                facing = switch (facing) {
-                    case DOWN, EAST -> Direction.NORTH;
-                    case NORTH -> Direction.UP;
-                    case UP, WEST -> Direction.SOUTH;
-                    case SOUTH -> Direction.DOWN;
-                };
-            }
-            return state.with(AXIS_FACING, LogAxisFacing.find(axis, facing));
-        }
-        return state;
-    }
-
-    private static int getRotations(@NotNull BlockRotation rotation) {
-        return switch (rotation) {
-            case NONE -> 0;
-            case CLOCKWISE_90 -> 1;
-            case CLOCKWISE_180 -> 2;
-            case COUNTERCLOCKWISE_90 -> 3;
-        };
-    }
-
-    @NotNull
-    @Override
-    public BlockState mirror(@NotNull BlockState state, @NotNull BlockMirror mirror) {
-        var axisFacing = state.get(AXIS_FACING);
-        var rotation = mirror.getRotation(axisFacing.facing);
-        return state.rotate(rotation);
+                .with(FILLED_SIDE, FilledSide.NONE));
     }
 
     @Override
     protected void appendProperties(@NotNull StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
-        builder.add(AXIS_FACING, FILLED);
-    }
-
-    @NotNull
-    @Override
-    public BlockState getPlacementState(@NotNull ItemPlacementContext ctx) {
-        var axis = ctx.getSide().getAxis();
-        var axisUp = LogAxisFacing.find(axis, Direction.UP);
-        var logAxisFacing = axis != Direction.Axis.Y ? axisUp : LogAxisFacing.Y_NORTH;
-        return this.getDefaultState()
-                .with(AXIS_FACING, logAxisFacing);
+        builder.add(FILLED_SIDE);
     }
 
     @Override
@@ -157,7 +90,7 @@ public class RubberLogBlock extends Block {
             if (!player.getInventory().insertStack(itemStack)) {
                 player.dropItem(itemStack, false);
             }
-            var newState = state.with(FILLED, false);
+            var newState = state.with(FILLED_SIDE, FilledSide.NONE);
             world.setBlockState(pos, newState, Block.NOTIFY_LISTENERS);
         }
         return ActionResult.CONSUME;
@@ -186,9 +119,9 @@ public class RubberLogBlock extends Block {
             return;
         }
         var filled = random.nextInt() % 100 > CHANCE_TO_FILL;
-        var newState = state.with(FILLED, filled);
         if(filled) {
-            newState = newState.rotate(BlockRotation.random(random));
+            var newState = state
+                    .with(FILLED_SIDE, FILLED_SIDES[random.nextInt(FILLED_SIDES.length - 1) + 1]);
             world.setBlockState(pos, newState, Block.NOTIFY_LISTENERS);
         }
     }
@@ -203,7 +136,7 @@ public class RubberLogBlock extends Block {
         if(blockState == null) {
             return false;
         }
-        var filled = blockState.get(FILLED);
-        return filled != null && filled;
+        var filledSide = blockState.get(FILLED_SIDE);
+        return filledSide != null && filledSide != FilledSide.NONE;
     }
 }
