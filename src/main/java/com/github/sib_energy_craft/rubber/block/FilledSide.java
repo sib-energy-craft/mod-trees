@@ -7,7 +7,7 @@ import java.util.Locale;
 
 /**
  * @author sibmaks
- * @since 0.0.10
+ * @since 0.0.9
  */
 public enum FilledSide implements StringIdentifiable {
     NONE,
