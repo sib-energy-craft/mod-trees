@@ -1,14 +1,13 @@
 {
   "schemaVersion": 1,
   "id": "sec-mod-rubber",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "name": "SibEnergyCraft - Rubber tree & items",
   "authors": [
     "sibmaks"
   ],
   "contact": {},
   "license": "MIT",
-  "icon": "assets/sib_energy_craft/icon.png",
   "environment": "*",
   "depends": {
     "fabricloader": ">=0.14.21",
