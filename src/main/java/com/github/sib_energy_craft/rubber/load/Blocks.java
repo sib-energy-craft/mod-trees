@@ -3,7 +3,6 @@ package com.github.sib_energy_craft.rubber.load;
 import com.github.sib_energy_craft.energy_api.utils.Identifiers;
 import com.github.sib_energy_craft.rubber.block.RubberLogBlock;
 import com.github.sib_energy_craft.rubber.block.RubberSaplingGenerator;
-import com.github.sib_energy_craft.rubber.block.RubberStrippedLogBlock;
 import com.github.sib_energy_craft.sec_utils.Hooks;
 import com.github.sib_energy_craft.sec_utils.common.Identified;
 import com.github.sib_energy_craft.sec_utils.load.DefaultModInitializer;
@@ -85,7 +84,7 @@ public final class Blocks implements DefaultModInitializer {
         RUBBER_LOG = register(Identifiers.of("rubber_log"), rubberLogBlock);
 
         var strippedRubberLogSettings = getWoodSettings(MapColor.OAK_TAN, MapColor.OAK_TAN);
-        var strippedLogBlock = new RubberStrippedLogBlock(strippedRubberLogSettings);
+        var strippedLogBlock = new PillarBlock(strippedRubberLogSettings);
         STRIPPED_RUBBER_LOG = register(Identifiers.of("stripped_rubber_log"), strippedLogBlock);
 
         var planksSettings = AbstractBlock.Settings.create()
@@ -189,8 +188,8 @@ public final class Blocks implements DefaultModInitializer {
     }
 
     private static boolean isUpDownFacing(@NotNull BlockState state) {
-        var axisFacing = state.get(RubberLogBlock.AXIS_FACING);
-        return axisFacing.axis == Direction.Axis.Y;
+        var axisFacing = state.get(RubberLogBlock.AXIS);
+        return axisFacing == Direction.Axis.Y;
     }
 
     private static ButtonBlock createWoodenButtonBlock(@NotNull BlockSetType blockSetType) {
