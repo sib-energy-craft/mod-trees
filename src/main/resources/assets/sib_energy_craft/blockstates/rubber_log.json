@@ -31,8 +31,9 @@
       "model": "sib_energy_craft:block/rubber_log_filled_horizontal"
     },
     "axis=z,filled_side=a": {
-      "x": 90,
-      "model": "sib_energy_craft:block/rubber_log_filled"
+      "model": "sib_energy_craft:block/rubber_log_filled",
+      "x": 270,
+      "y": 180
     },
     "axis=z,filled_side=b": {
       "model": "sib_energy_craft:block/rubber_log_filled",
@@ -45,22 +46,22 @@
     },
     "axis=x,filled_side=a": {
       "model": "sib_energy_craft:block/rubber_log_filled_horizontal",
-      "y": 270,
-      "x": 180
+      "x": 180,
+      "y": 270
+    },
+    "axis=x,filled_side=b": {
+      "model": "sib_energy_craft:block/rubber_log_filled_horizontal",
+      "y": 90
     },
     "axis=x,filled_side=c": {
-      "x": 270,
-      "y": 270,
+      "x": 90,
+      "y": 90,
       "model": "sib_energy_craft:block/rubber_log_filled"
     },
     "axis=x,filled_side=d": {
       "model": "sib_energy_craft:block/rubber_log_filled",
       "x": 270,
       "y": 270
-    },
-    "axis=x,filled_side=b": {
-      "model": "sib_energy_craft:block/rubber_log_filled_horizontal",
-      "y": 90
     }
   }
 }

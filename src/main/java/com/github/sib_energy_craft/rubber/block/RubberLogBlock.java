@@ -17,6 +17,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
@@ -73,8 +74,8 @@ public class RubberLogBlock extends PillarBlock {
         if (player == null || hand == null) {
             return ActionResult.PASS;
         }
-        var filled = isFilled(state);
-        if(!filled) {
+        var filledSide = state.get(FILLED_SIDE);
+        if(filledSide == FilledSide.NONE) {
             return ActionResult.PASS;
         }
 
@@ -82,6 +83,21 @@ public class RubberLogBlock extends PillarBlock {
 
         if (stackInHand == null || !(stackInHand.getItem() instanceof TreeTap treeTap)) {
             return ActionResult.PASS;
+        }
+        var axis = state.get(AXIS);
+        var tapingSide = hit.getSide();
+        if (axis == Direction.Axis.X) {
+            if(filledSide.xSide != tapingSide) {
+                return ActionResult.PASS;
+            }
+        } else  if (axis == Direction.Axis.Y) {
+            if(filledSide.ySide != tapingSide) {
+                return ActionResult.PASS;
+            }
+        } else if (axis == Direction.Axis.Z) {
+            if(filledSide.zSide != tapingSide) {
+                return ActionResult.PASS;
+            }
         }
         if (world.isClient) {
             world.playSound(player, pos, SoundEvents.ENTITY_FISHING_BOBBER_RETRIEVE, SoundCategory.BLOCKS, 1.0f, 1.0f);
