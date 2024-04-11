@@ -20,8 +20,8 @@ import static com.github.sib_energy_craft.sec_utils.utils.BlockUtils.register;
 
 
 /**
- * @since 0.0.1
  * @author sibmaks
+ * @since 0.0.1
  */
 public final class Blocks implements DefaultModInitializer {
     public static final Identified<LeavesBlock> RUBBER_LEAVES;
@@ -62,14 +62,14 @@ public final class Blocks implements DefaultModInitializer {
 
         RUBBER_LEAVES = register(Identifiers.of("rubber_leaves"), new LeavesBlock(leavesSettings));
 
-        var saplingSettings =  AbstractBlock.Settings.create()
+        var saplingSettings = AbstractBlock.Settings.create()
                 .mapColor(MapColor.GREEN)
                 .noCollision()
                 .ticksRandomly()
                 .breakInstantly()
                 .sounds(BlockSoundGroup.GRASS)
                 .pistonBehavior(PistonBehavior.DESTROY);
-        var saplingBlock = new SaplingBlock(new RubberSaplingGenerator(), saplingSettings);
+        var saplingBlock = new SaplingBlock(RubberSaplingGenerator.RUBBER, saplingSettings);
         RUBBER_SAPLING = register(Identifiers.of("rubber_sapling"), saplingBlock);
 
         var pottedSaplingSettings = AbstractBlock.Settings.create()
@@ -117,7 +117,7 @@ public final class Blocks implements DefaultModInitializer {
                 .nonOpaque()
                 .burnable()
                 .pistonBehavior(PistonBehavior.DESTROY);
-        var rubberDoor = new DoorBlock(rubberDoorSettings, rubberBlockSetType);
+        var rubberDoor = new DoorBlock(rubberBlockSetType, rubberDoorSettings);
         RUBBER_DOOR = register(Identifiers.of("rubber_door"), rubberDoor);
 
         var rubberButton = createWoodenButtonBlock(rubberBlockSetType);
@@ -134,10 +134,10 @@ public final class Blocks implements DefaultModInitializer {
         var rubberFence = new FenceBlock(rubberItemsSettings);
         RUBBER_FENCE = register(Identifiers.of("rubber_fence"), rubberFence);
 
-        var rubberFenceGate = new FenceGateBlock(rubberItemsSettings, WoodType.BIRCH);
+        var rubberFenceGate = new FenceGateBlock(WoodType.BIRCH, rubberItemsSettings);
         RUBBER_FENCE_GATE = register(Identifiers.of("rubber_fence_gate"), rubberFenceGate);
 
-        var rubberPressurePlateSettings =  AbstractBlock.Settings.create()
+        var rubberPressurePlateSettings = AbstractBlock.Settings.create()
                 .mapColor(RUBBER_PLANKS.entity().getDefaultMapColor())
                 .solid()
                 .instrument(Instrument.BASS)
@@ -145,9 +145,7 @@ public final class Blocks implements DefaultModInitializer {
                 .strength(0.5F)
                 .burnable()
                 .pistonBehavior(PistonBehavior.DESTROY);
-        var rubberPressurePlate = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,
-                rubberPressurePlateSettings,
-                rubberBlockSetType);
+        var rubberPressurePlate = new PressurePlateBlock(rubberBlockSetType, rubberPressurePlateSettings);
         RUBBER_PRESSURE_PLATE = register(Identifiers.of("rubber_pressure_plate"), rubberPressurePlate);
 
         var rubberSlabBlock = new SlabBlock(rubberItemsSettings);
@@ -164,7 +162,7 @@ public final class Blocks implements DefaultModInitializer {
                 .nonOpaque()
                 .allowsSpawning((state, world, pos, type) -> false)
                 .burnable();
-        var rubberTrapdoor = new TrapdoorBlock(rubberTrapdoorSettings, rubberBlockSetType);
+        var rubberTrapdoor = new TrapdoorBlock(rubberBlockSetType, rubberTrapdoorSettings);
         RUBBER_TRAPDOOR = register(Identifiers.of("rubber_trapdoor"), rubberTrapdoor);
     }
 
@@ -198,6 +196,6 @@ public final class Blocks implements DefaultModInitializer {
                 .strength(0.5F)
                 .pistonBehavior(PistonBehavior.DESTROY);
 
-        return new ButtonBlock(buttonSettings, blockSetType, 30, true);
+        return new ButtonBlock(blockSetType, 30, buttonSettings);
     }
 }
