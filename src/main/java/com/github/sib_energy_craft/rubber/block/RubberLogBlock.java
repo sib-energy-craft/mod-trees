@@ -125,7 +125,7 @@ public class RubberLogBlock extends PillarBlock {
                 pos::north, pos::south,
                 pos::west, pos::east
         );
-        boolean isNeighborFilled = neighbors
+        var isNeighborFilled = neighbors
                 .map(Supplier::get)
                 .map(world::getBlockState)
                 .filter(Objects::nonNull)

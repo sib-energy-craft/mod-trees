@@ -20,8 +20,8 @@ import static com.github.sib_energy_craft.sec_utils.utils.BlockUtils.register;
 
 
 /**
- * @since 0.0.1
  * @author sibmaks
+ * @since 0.0.1
  */
 public final class Blocks implements DefaultModInitializer {
     public static final Identified<LeavesBlock> RUBBER_LEAVES;
