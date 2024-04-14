@@ -42,7 +42,7 @@ dependencies {
     modImplementation("com.github.sib-energy-craft:energy-api:${project.property("sec_energy_api_version")}")
     modImplementation("com.github.sib-energy-craft:sec-utils:${project.property("sec_utils_version")}")
 
-    modImplementation("com.github.sib-energy-craft:mod-tools-api:${project.property("sec_mod_tools_api_version")}")
+    modImplementation("com.github.sib-energy-craft:sec-mod-api:${project.property("sec_mod_api_version")}")
 
     modImplementation("com.github.sib-energy-craft:mod-tools-impl:${project.property("sec_mod_tools_impl_version")}")
     modImplementation("com.github.sib-energy-craft:mod-recipes:${project.property("sec_mod_recipes_version")}")
